@@ -1,10 +1,11 @@
+
 from scipy.io import loadmat
 
 
 def get_Farmland_dataset():
-    data_set_before = loadmat(r'../../datasets/Yancheng/farm06.mat')['imgh']
-    data_set_after = loadmat(r'../../datasets/Yancheng/farm07.mat')['imghl']
-    ground_truth = loadmat(r'../../datasets/Yancheng/label.mat')['label']
+    data_set_before = loadmat('/kaggle/input/farmland/farm06.mat')['imgh']
+    data_set_after = loadmat('/kaggle/input/farmland/farm07.mat')['imghl']
+    ground_truth = loadmat('/kaggle/input/farmland/label (1).mat')['label']
 
     img1 = data_set_before.astype('float32')
     img2 = data_set_after.astype('float32')
