@@ -61,8 +61,7 @@ def main():
     # save
     save_folder = cfg_test['save_folder']
     save_name = cfg_test['save_name']
-    if not os.path.exists(save_folder):
-        os.mkdir(save_folder)
+    os.makedirs(save_folder, exist_ok=True)
     io.savemat(save_folder + '/' + save_name + ".mat",  {"predict_img": np.array(predict_img.cpu()), "oa_final": assessment_pre})
     predict_img = np.array(predict_img * 255, dtype=np.uint8)
     imageio.imwrite(save_folder + '/' + save_name + '+predict_img.png', predict_img)
@@ -71,4 +70,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
