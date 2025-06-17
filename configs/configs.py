@@ -1,4 +1,4 @@
-current_dataset = 'Farmland'
+current_dataset = 'Bayarea'
 current_model = '_A'
 current = current_dataset + current_model
 
@@ -7,7 +7,7 @@ train_set_num = [0.5, 0.0005]
 
 patch_size = 32
 lr = [1e-3, 1e-2]
-epoch_number = 20  # epoch=20
+epoch_number = 10  # epoch=20
 bs_number = 128
 lr_step_pre = [30, 50, 50]
 
@@ -15,6 +15,7 @@ data = dict(
     current_dataset=current_dataset,
     train_set_num=train_set_num,
     patch_size=patch_size,
+    data_root='/kaggle/input/bayarea1/',
     trl_data=dict(
         phase=phase[0]
     ),
