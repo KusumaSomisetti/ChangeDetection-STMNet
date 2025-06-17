@@ -13,7 +13,7 @@ def get_tratest_set_batch(cfg, logger):
         'current_dataset:{}|| train_set_num:{},patch_size:{}'.format(current_dataset, train_set_num, patch_size))
 
     # loadmat
-    img1, img2, gt = getdata(current_dataset)
+    img1, img2, gt = getdata(current_dataset,cfg)
     img1 = torch.from_numpy(img1)
     img2 = torch.from_numpy(img2)
     gt = torch.from_numpy(gt)
