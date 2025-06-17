@@ -7,7 +7,7 @@ train_set_num = [0.5, 0.0005]
 
 patch_size = 32
 lr = [1e-3, 1e-2]
-epoch_number = 10  # epoch=20
+epoch_number = 20  # epoch=20
 bs_number = 128
 lr_step_pre = [30, 50, 50]
 
