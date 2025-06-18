@@ -4,13 +4,21 @@ from torchvision import transforms
 
 
 def std_norm(image):  # input tensor image size with CxHxW
-    image = image.permute(1, 2, 0).numpy()
+    image = image.permute(1, 2, 0).numpy()  # Convert to HWC
+
+    mean = torch.tensor(image).mean(dim=[0, 1])
+    std = torch.tensor(image).std(dim=[0, 1])
+
+    # ⚠️ Replace zero std values with 1.0 to avoid division by zero
+    std[std == 0] = 1.0
+
     trans = transforms.Compose([
         transforms.ToTensor(),
-        transforms.Normalize(torch.tensor(image).mean(dim=[0, 1]), torch.tensor(image).std(dim=[0, 1]))
-    ])  # (x - mean(x))/std(x) normalize to mean: 0, std: 1
+        transforms.Normalize(mean, std)
+    ])
 
     return trans(image)
+
 
 
 def one_zero_norm(image):  # input tensor image size with CxHxW
