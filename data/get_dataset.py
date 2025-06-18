@@ -14,9 +14,9 @@ def get_Farmland_dataset():
 
 
 def get_Hermiston_dataset():
-    data_set_before = loadmat(r'../../datasets/Hermiston/USA_Change_Dataset.mat')['T1']
-    data_set_after = loadmat(r'../../datasets/Hermiston/USA_Change_Dataset.mat')['T2']
-    ground_truth = loadmat(r'../../datasets/Hermiston/USA_Change_Dataset.mat')['Binary']
+    data_set_before = loadmat('/kaggle/input/hermiston154/hermiston_pca154.mat')['HypeRvieW']
+    data_set_after = loadmat('/kaggle/input/hermiston154/hermiston2_pca154.mat')['HypeRvieW']
+    ground_truth = loadmat('/kaggle/input/hermiston/rdChangesHermiston_5classes.mat')['gt5clasesHermiston']
 
     img1 = data_set_before.astype('float32')
     img2 = data_set_after.astype('float32')
@@ -34,10 +34,10 @@ def get_Bayarea_dataset(cfg):
 
     return img1, img2, gt
 
-def get_dataset(current_dataset,cfg):
+def get_dataset(current_dataset):
     if current_dataset == 'Farmland':
         return get_Farmland_dataset()  # Farmland(450, 140, 155), gt[0. 1.]
     elif current_dataset == 'Bayarea':
-        return get_Bayarea_dataset(cfg)  # Bayarea(600, 500, 224), gt[0. 1. 2.]
+        return get_Bayarea_dataset()  # Bayarea(600, 500, 224), gt[0. 1. 2.]
     elif current_dataset == 'Hermiston':
         return get_Hermiston_dataset()  # Hermiston(307, 241, 154), gt[0. 1.]
